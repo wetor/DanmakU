@@ -285,7 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364750526}
   - component: {fileID: 1364750527}
-  - component: {fileID: 1364750528}
+  - component: {fileID: 1364750529}
   m_Layer: 0
   m_Name: Emitter
   m_TagString: Untagged
@@ -321,8 +321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DanmakuType: {fileID: 2040105326}
   Speed:
-    _min: 1
-    _max: 1
+    _min: 2
+    _max: 2
   AngularSpeed:
     _min: 0
     _max: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   FireRate:
     _min: 1
     _max: 1
-  FrameRate: 40
+  FrameRate: 5
   Arc:
     Count:
       _min: 5
@@ -343,12 +343,12 @@ MonoBehaviour:
       _max: 0
   Line:
     Count:
-      _min: 3
-      _max: 3
+      _min: 100
+      _max: 100
     DeltaSpeed:
       _min: 0
       _max: 0
---- !u!114 &1364750528
+--- !u!114 &1364750529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,12 +357,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1364750525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aea72aa749207d448ff891e059cb44c, type: 3}
+  m_Script: {fileID: 11500000, guid: bef6e68caf373424c96255010ff3b594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration:
-    _min: 0.1
-    _max: 0.1
+  Range:
+    _min: 5
+    _max: 5
 --- !u!1 &1481724626
 GameObject:
   m_ObjectHideFlags: 0

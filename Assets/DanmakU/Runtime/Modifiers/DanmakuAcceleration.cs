@@ -23,7 +23,6 @@ namespace DanmakU.Modifiers
         {
             var acceleration = Acceleration * Time.deltaTime;
             if (acceleration.Approximately(0f)) return dependency;
-            Debug.Log(acceleration.Size);
             if (Mathf.Approximately(acceleration.Size, 0f))
             {
                 return new ApplyRandomAcceleration
