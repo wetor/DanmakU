@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DanmakU {
+namespace DanmakU
+{
 
-public struct DanmakuCollision {
-  public Danmaku Danmaku;
-  public RaycastHit2D RaycastHit;
-}
+    public struct DanmakuCollision
+    {
+        public Danmaku Danmaku;
+        public RaycastHit2D RaycastHit;
+    }
 
 }
