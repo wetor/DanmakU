@@ -107,13 +107,19 @@ namespace DanmakU
         internal NativeArray<DanmakuState> InitialStates;
 
         /// <summary>
+        /// 生存帧数计数器 <see cref="DanmakU.Danmaku"/> in the pool.
+        /// </summary>
+        /// <seealso cref="DanmakU.Danmaku.Counters"/>
+        public NativeArray<int> Counters;
+
+        /// <summary>
         /// The array of all world positions of <see cref="DanmakU.Danmaku"/> in the pool.
         /// </summary>
         /// <seealso cref="DanmakU.Danmaku.Position"/>
         public NativeArray<Vector2> Positions;
 
         /// <summary>
-        /// The array of all world displacements of <see cref="DanmakU.Danmaku"/> in the pool.
+        /// 移动的位移距离 <see cref="DanmakU.Danmaku"/> in the pool.
         /// </summary>
         /// <seealso cref="DanmakU.Danmaku.Displacements"/>
         public NativeArray<Vector2> Displacements;
@@ -155,6 +161,7 @@ namespace DanmakU
             Capacity = poolSize;
             InitialStates = new NativeArray<DanmakuState>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Times = new NativeArray<float>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
+            Counters = new NativeArray<int>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Positions = new NativeArray<Vector2>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Displacements = new NativeArray<Vector2>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Rotations = new NativeArray<float>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
@@ -189,6 +196,7 @@ namespace DanmakU
             var state = config.CreateState();
             InitialStates[ActiveCount] = state;
             Times[ActiveCount] = 0f;
+            Counters[ActiveCount] = 0;
             var danmaku = new Danmaku(this, activeCountArray[0]++);
             danmaku.ApplyState(state);
             return danmaku;
@@ -206,6 +214,7 @@ namespace DanmakU
             for (var i = 0; i < count; i++)
             {
                 Times[activeCount + i] = 0f;
+                Counters[ActiveCount + i] = 0;
                 danmaku[i] = new Danmaku(this, activeCount + i);
             }
             activeCountArray[0] += count;
@@ -230,6 +239,7 @@ namespace DanmakU
             Capacity *= kGrowthFactor;
             Resize(ref InitialStates);
             Resize(ref Times);
+            Resize(ref Counters);
             Resize(ref Positions);
             Resize(ref Displacements);
             Resize(ref Rotations);
@@ -259,6 +269,7 @@ namespace DanmakU
             activeCountArray.Dispose();
             InitialStates.Dispose();
             Times.Dispose();
+            Counters.Dispose();
             Positions.Dispose();
             Displacements.Dispose();
             Rotations.Dispose();
@@ -279,7 +290,6 @@ namespace DanmakU
         internal void Destroy(Danmaku deactivate) => Times[deactivate.Id] = float.MinValue;
 
     }
-
     /// <summary>
     /// An enumerator of <see cref="DanmakU.Danmaku"/>
     /// </summary>

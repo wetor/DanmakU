@@ -15,41 +15,33 @@ namespace DanmakU.Modifiers
     {
 
         /// <summary>
-        /// The acceleration applied to bullets. Units is in game units per second per second.
+        /// 振幅.
         /// </summary>
-        public Range Range;
+        public Range Amplitude;
+        /// <summary>
+        /// 周期.
+        /// </summary>
+        public Range xSpeed;
+
+        public int num;
 
         public JobHandle UpdateDannmaku(DanmakuPool pool, JobHandle dependency = default(JobHandle))
         {
-            var range = Range * Time.deltaTime;
-            if (range.Approximately(0f)) return dependency;
-            if (Mathf.Approximately(range.Size, 0f))
+            var amplitude = Amplitude * Time.deltaTime;
+            if (amplitude.Approximately(0f)) return dependency;
+            num = pool.ActiveCount;
+            return new ApplyRandomDisplacement
             {
-                return new ApplyRandomDisplacement
-                {
-                    Range = range.Center,
-                    Times = pool.Times,
-                    Displacements = pool.Displacements
-                }.Schedule(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);
-                return new ApplyFixedDisplacement
-                {
-                    Range = range.Center,
-                    Times = pool.Times,
-                    Displacements = pool.Displacements
-                }.ScheduleBatch(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);
-            }
-            else
-            {
-                return new ApplyRandomDisplacement
-                {
-                    Range = range.Center,
-                    Times = pool.Times,
-                    Displacements = pool.Displacements
-                }.Schedule(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);
-            }
+                Amplitude = amplitude.Center,
+                xSpeed = xSpeed.Center,
+                Counters = pool.Counters,
+                Displacements = pool.Displacements,
+                Rotations = pool.Rotations
+            }.Schedule(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);
+
         }
 
-        struct ApplyFixedDisplacement : IJobBatchedFor
+        /*struct ApplyFixedDisplacement : IJobBatchedFor
         {
 
             public float Range;
@@ -66,24 +58,27 @@ namespace DanmakU.Modifiers
                     ptr->x = 0.05f;
                     ptr->y = Mathf.Sin(Mathf.PI / 6 * *(timePtr++) * 60 / 6) * Range;
                     ptr++;
-                   
+
 
                 }
             }
 
-        }
+        }*/
 
         struct ApplyRandomDisplacement : IJobParallelFor
         {
 
-            public float Range;
-            public NativeArray<float> Times;
+            public float Amplitude;
+            public float xSpeed;
+            public NativeArray<int> Counters;
             public NativeArray<Vector2> Displacements;
+            public NativeArray<float> Rotations;
 
             public void Execute(int index)
             {
-                Displacements[index] = new Vector2(0.03f, Mathf.Sin(Mathf.PI / 6 * Times[index]*60 /6) * Range);
-
+                Vector2 displacement = new Vector2(xSpeed, Amplitude * Mathf.Cos(Mathf.PI / 16 * Counters[index]));
+                Rotations[index] = Mathf.Atan2(displacement.y, displacement.x);
+                Displacements[index] = displacement;
             }
 
         }

@@ -11,6 +11,7 @@ namespace DanmakU
 
         public float DeltaTime;
 
+        public NativeArray<int> Counters;
         public NativeArray<Vector2> Positions;
         public NativeArray<Vector2> Displacements;
         public NativeArray<float> Rotations;
@@ -20,6 +21,7 @@ namespace DanmakU
         public MoveDanmaku(DanmakuPool pool)
         {
             DeltaTime = Time.deltaTime;
+            Counters = pool.Counters;
             Positions = pool.Positions;
             Displacements = pool.Displacements;
             Rotations = pool.Rotations;
@@ -29,6 +31,7 @@ namespace DanmakU
 
         public unsafe void Execute(int start, int end)
         {
+            var CounterPtr = (int*)Counters.GetUnsafePtr() + start;
             var positionPtr = (Vector2*)Positions.GetUnsafePtr() + start;
             var displacementsPtr = (Vector2*)Displacements.GetUnsafePtr() + start;
             var rotationPtr = (float*)Rotations.GetUnsafePtr() + start;
@@ -45,6 +48,7 @@ namespace DanmakU
                 rotationPtr++;
                 positionPtr++;
                 displacementsPtr++;
+                (*(CounterPtr++))++;
             }
         }
 

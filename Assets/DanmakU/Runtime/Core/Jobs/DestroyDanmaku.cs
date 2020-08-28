@@ -13,6 +13,7 @@ namespace DanmakU
 
         NativeArray<int> ActiveCountArray;
         NativeArray<float> Times;
+        NativeArray<int> Counters;
         NativeArray<DanmakuState> InitialStates;
         NativeArray<Vector2> Positions;
         NativeArray<Vector2> Displacements;
@@ -26,6 +27,7 @@ namespace DanmakU
         {
             ActiveCountArray = pool.activeCountArray;
             Times = pool.Times;
+            Counters = pool.Counters;
             InitialStates = pool.InitialStates;
             Positions = pool.Positions;
             Displacements = pool.Displacements;
@@ -47,6 +49,7 @@ namespace DanmakU
                 activeCount--;
                 InitialStates[i] = InitialStates[activeCount];
                 Times[i] = Times[activeCount];
+                Counters[i] = Counters[activeCount];
                 Positions[i] = Positions[activeCount];
                 Displacements[i] = Displacements[activeCount];
                 OldPositions[i] = OldPositions[activeCount];

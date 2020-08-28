@@ -48,6 +48,16 @@ namespace DanmakU
         public DanmakuState InitialState => Pool.InitialStates[Id];
 
         /// <summary>
+        /// 取得Danmaku的计数器.
+        /// </summary>
+        public int Counter
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get { return Pool.Counters[Id]; }
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set { Pool.Counters[Id] = value; }
+        }
+        /// <summary>
         /// Gets or sets the world position of the Danmaku.
         /// </summary>
         public Vector2 Position
