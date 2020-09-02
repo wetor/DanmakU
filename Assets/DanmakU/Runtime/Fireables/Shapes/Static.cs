@@ -5,10 +5,8 @@ namespace DanmakU.Fireables
 {
 
     [Serializable]
-    public class SinLine : Fireable
+    public class Static : Fireable
     {
-
-        private int frame = 0;
         public override void Fire(DanmakuConfig state)
         {
             var currentState = state;
@@ -16,9 +14,6 @@ namespace DanmakU.Fireables
             currentState.Rotation = 0;
             currentState.Speed = 0;
             Subfire(currentState);
-            frame++;
-
-
         }
 
     }

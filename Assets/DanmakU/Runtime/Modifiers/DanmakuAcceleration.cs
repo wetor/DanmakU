@@ -31,11 +31,11 @@ namespace DanmakU.Modifiers
                     Speeds = pool.Speeds
                 }.Schedule(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);
 
-                /*return new ApplyFixedAcceleration
+                return new ApplyFixedAcceleration
                 {
                     Acceleration = acceleration.Center,
                     Speeds = pool.Speeds
-                }.ScheduleBatch(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);*/
+                }.ScheduleBatch(pool.ActiveCount, DanmakuPool.kBatchSize, dependency);
             }
             else
             {

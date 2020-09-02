@@ -37,7 +37,7 @@ namespace DanmakU
             }
             var set = CreateSet(DanmakuType);
             set.AddModifiers(GetComponents<IDanmakuModifier>());
-            fireable = Arc.Of(new SinLine()).Of(set);
+            fireable = Arc.Of(new Static()).Of(set);
         }
 
         /// <summary>
