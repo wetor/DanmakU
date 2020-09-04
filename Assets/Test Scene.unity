@@ -322,8 +322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DanmakuType: {fileID: 2040105326}
   Speed:
-    _min: 1
-    _max: 1
+    _min: 0.4
+    _max: 0.4
   AngularSpeed:
     _min: 0
     _max: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   FireRate:
     _min: 1
     _max: 1
-  FrameRate: 1
+  FrameRate: 5
   Arc:
     Count:
       _min: 5
@@ -340,13 +340,6 @@ MonoBehaviour:
       _min: 6.2831855
       _max: 6.2831855
     Radius:
-      _min: 0
-      _max: 0
-  Line:
-    Count:
-      _min: 1
-      _max: 1
-    DeltaSpeed:
       _min: 0
       _max: 0
 --- !u!114 &1364750528
