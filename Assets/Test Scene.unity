@@ -317,17 +317,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1364750525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d35b1ef2eef8249b0ba1b88e74fe60, type: 3}
+  m_Script: {fileID: 11500000, guid: 7964be703a63bc740bb8b1c83e3f3aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DanmakuType: {fileID: 2040105326}
   Speed:
-    _min: 2
-    _max: 2
+    _min: 1
+    _max: 1
   AngularSpeed:
     _min: 0
     _max: 0
-  Color: {r: 0.9042859, g: 0, b: 1, a: 1}
+  Color: {r: 0.8584906, g: 0.10933607, b: 0.679063, a: 1}
   FireRate:
     _min: 1
     _max: 1
@@ -374,9 +374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3516bf7df425c3f48ae03db0d7dd8748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amplitude: 0.2
+  Amplitude: 0.4
   Period: 0.1
   Phase: 0
+  Angle: 0
   num: 0
 --- !u!1 &1481724626
 GameObject:
@@ -509,30 +510,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718847664}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56d35b1ef2eef8249b0ba1b88e74fe60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DanmakuType: {fileID: 2040105326}
   Speed:
-    _min: 1
-    _max: 1
+    _min: 2
+    _max: 2
   AngularSpeed:
     _min: 0
     _max: 0
-  Color: {r: 0.8113208, g: 0.18752226, b: 0.18752226, a: 1}
+  Color: {r: 0.9245283, g: 0.07413671, b: 0.07413671, a: 1}
   FireRate:
     _min: 1
     _max: 1
   FrameRate: 0
   Arc:
     Count:
-      _min: 5
-      _max: 5
+      _min: 10
+      _max: 10
     ArcLength:
-      _min: 1.5707964
-      _max: 1.5707964
+      _min: 6.2831855
+      _max: 6.2831855
     Radius:
       _min: 0
       _max: 0
@@ -555,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd511dfc20a68049940d3f6e0815a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeCounter: 50
+  LifeCounter: 200
 --- !u!1 &1829220895
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +572,7 @@ GameObject:
   - component: {fileID: 1829220898}
   - component: {fileID: 1829220901}
   m_Layer: 0
-  m_Name: DanmakuCollider
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,7 +619,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.1
 --- !u!212 &1829220899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -681,6 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef95809ae5ebe443afac0898508f718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 4.5
 --- !u!114 &1829220901
 MonoBehaviour:
   m_ObjectHideFlags: 0

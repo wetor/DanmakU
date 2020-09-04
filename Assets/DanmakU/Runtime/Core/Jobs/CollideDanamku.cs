@@ -13,6 +13,12 @@ namespace DanmakU
         Bounds2D Bounds;
         [ReadOnly] NativeArray<Vector2> Positions;
         [WriteOnly] NativeArray<int> Collisions;
+        [ReadOnly] NativeArray<float> Rotations;
+        [ReadOnly] NativeArray<float> Speeds;
+        [ReadOnly] NativeArray<Vector2> Displacements;
+        Vector2 displacement;
+        float DeltaTime;
+        float Size;
 
         public CollideDanamku(DanmakuPool pool)
         {
@@ -20,12 +26,21 @@ namespace DanmakU
             Bounds = new Bounds2D(Vector2.zero, new Vector2(radius, radius));
             Positions = pool.Positions;
             Collisions = pool.CollisionMasks;
+            Rotations = pool.Rotations;
+            Speeds = pool.Speeds;
+            Displacements = pool.Displacements;
+            displacement = new Vector2();
+            DeltaTime = Time.deltaTime;
+            Size = 0;
         }
 
         public void Execute(int index)
         {
             Bounds.Center = Positions[index];
-            Collisions[index] = DanmakuCollider.TestCollisions(Bounds);
+            //displacement.x = Displacements[index].x + Speeds[index] * Mathf.Cos(Rotations[index]) * DeltaTime;
+            //displacement.y = Displacements[index].y + Speeds[index] * Mathf.Sin(Rotations[index]) * DeltaTime;
+
+            Collisions[index] = DanmakuCollider.TestCollisions(Bounds, out Size);
         }
 
     }

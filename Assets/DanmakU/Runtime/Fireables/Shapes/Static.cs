@@ -3,7 +3,9 @@ using UnityEngine;
 
 namespace DanmakU.Fireables
 {
-
+    /// <summary>
+    /// 静态子弹，需要使用Modifier来更新子弹
+    /// </summary>
     [Serializable]
     public class Static : Fireable
     {

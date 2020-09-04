@@ -171,10 +171,16 @@ namespace DanmakU
             collidedDanmaku.Clear();
         }
 
-        internal static int TestCollisions(Bounds2D bounds)
+        //TODO: 碰撞检测
+        internal static int TestCollisions(Bounds2D bounds, out float size)
         {
-            if (!GlobalBounds.Intersects(bounds)) return 0;
+            if (!GlobalBounds.Intersects(bounds))
+            {
+                size = GlobalBounds.Size.x;
+                return 0;
+            }
             int collisions = 0;
+          
             for (var i = 0; i < HighestLayer; i++)
             {
                 var mask = 1 << i;
@@ -187,6 +193,7 @@ namespace DanmakU
                     break;
                 }
             }
+            size = 0;
             return collisions;
         }
 
