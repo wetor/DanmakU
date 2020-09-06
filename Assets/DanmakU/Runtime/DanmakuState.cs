@@ -14,6 +14,7 @@ namespace DanmakU
         public Vector2 Position;
         public Vector2 Displacement;
         [Radians] public Range Rotation;
+        [Radians] public Range Angle;
         public Range Speed;
         [Radians] public Range AngularSpeed;
         public Color Color;
@@ -29,6 +30,7 @@ namespace DanmakU
                 Position = Position,
                 Displacement = Displacement,
                 Rotation = Rotation.GetValue(),
+                Angle = Angle.GetValue(),
                 Speed = Speed.GetValue(),
                 AngularSpeed = AngularSpeed.GetValue(),
                 Color = Color
@@ -46,6 +48,7 @@ namespace DanmakU
         public Vector2 Position;
         public Vector2 Displacement;
         [Radians] public float Rotation;
+        [Radians] public float Angle;
         public float Speed;
         [Radians] public float AngularSpeed;
         public Color Color;

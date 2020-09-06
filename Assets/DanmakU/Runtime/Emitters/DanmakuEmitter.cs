@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using DanmakU.Fireables;
 using UnityEngine;
 
-namespace DanmakU
+namespace DanmakU.Emitters
 {
 
-    [AddComponentMenu("DanmakU/Danmaku Emitter")]
+    [AddComponentMenu("DanmakU/Emitters/Danmaku Emitter")]
     public class DanmakuEmitter : DanmakuBehaviour
     {
 

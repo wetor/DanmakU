@@ -106,6 +106,22 @@ namespace DanmakU
         }
 
         /// <summary>
+        /// 获取弹幕的发射角度，一般为初角度.
+        /// </summary>
+        /// <remarks>
+        /// Units are in radians. 0 points directly right. Pi points directly left.
+        /// Controls both the graphical rotation as well as the direction of motion
+        /// the Danmaku is moving in.
+        /// </remarks>
+        public float Angle
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get { return Pool.Angles[Id]; }
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set { Pool.Angles[Id] = value; }
+        }
+
+        /// <summary>
         /// Gets the direction the Danmaku is facing. Guarenteed to be a unit vector.
         /// </summary>
         public Vector2 Direction => GetDirection(Pool.Rotations[Id]);
@@ -177,6 +193,7 @@ namespace DanmakU
                 Position = Position,
                 Displacement = Displacement,
                 Rotation = Rotation,
+                Angle = Angle,
                 Speed = Speed,
                 AngularSpeed = AngularSpeed,
                 Color = Color
@@ -196,6 +213,7 @@ namespace DanmakU
                 Position = Position,
                 Displacement = Displacement,
                 Rotation = Rotation,
+                Angle = Angle,
                 Speed = Speed,
                 AngularSpeed = AngularSpeed,
                 Color = Color
@@ -212,6 +230,7 @@ namespace DanmakU
             Displacement = state.Displacement;
             OldPosition = state.Position; // Reset OldPosition so collision calculations are correct
             Rotation = state.Rotation;
+            Angle = state.Angle;
             Speed = state.Speed;
             AngularSpeed = state.AngularSpeed;
             Color = state.Color;

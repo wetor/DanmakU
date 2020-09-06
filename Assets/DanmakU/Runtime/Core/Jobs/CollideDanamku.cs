@@ -14,6 +14,7 @@ namespace DanmakU
         [ReadOnly] NativeArray<Vector2> Positions;
         [WriteOnly] NativeArray<int> Collisions;
         [ReadOnly] NativeArray<float> Rotations;
+        [ReadOnly] NativeArray<float> Angles;
         [ReadOnly] NativeArray<float> Speeds;
         [ReadOnly] NativeArray<Vector2> Displacements;
         Vector2 displacement;
@@ -27,6 +28,7 @@ namespace DanmakU
             Positions = pool.Positions;
             Collisions = pool.CollisionMasks;
             Rotations = pool.Rotations;
+            Angles = pool.Angles;
             Speeds = pool.Speeds;
             Displacements = pool.Displacements;
             displacement = new Vector2();

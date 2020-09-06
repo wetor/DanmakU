@@ -19,6 +19,7 @@ namespace DanmakU
         NativeArray<Vector2> Displacements;
         NativeArray<Vector2> OldPositions;
         NativeArray<float> Rotations;
+        NativeArray<float> Angles;
         NativeArray<float> Speeds;
         NativeArray<float> AngularSpeeds;
         NativeArray<Vector4> Colors;
@@ -33,6 +34,7 @@ namespace DanmakU
             Displacements = pool.Displacements;
             OldPositions = pool.OldPositions;
             Rotations = pool.Rotations;
+            Angles = pool.Angles;
             Times = pool.Times;
             Speeds = pool.Speeds;
             AngularSpeeds = pool.AngularSpeeds;
@@ -54,6 +56,7 @@ namespace DanmakU
                 Displacements[i] = Displacements[activeCount];
                 OldPositions[i] = OldPositions[activeCount];
                 Rotations[i] = Rotations[activeCount];
+                Angles[i] = Angles[activeCount];
                 Speeds[i] = Speeds[activeCount];
                 AngularSpeeds[i] = AngularSpeeds[activeCount];
                 Colors[i] = Colors[activeCount];

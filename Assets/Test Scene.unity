@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd511dfc20a68049940d3f6e0815a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeCounter: 200
+  LifeCounter: 350
 --- !u!114 &1364750529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,10 +367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3516bf7df425c3f48ae03db0d7dd8748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amplitude: 0.4
-  Period: 0.1
+  Amplitude: 0.1
+  Period: 0.025
   Phase: 0
-  Angle: 0
+  Speed: 0.5
   num: 0
 --- !u!1 &1481724626
 GameObject:

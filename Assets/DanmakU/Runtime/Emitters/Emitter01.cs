@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using DanmakU.Fireables;
 using UnityEngine;
 
-namespace DanmakU
+namespace DanmakU.Emitters
 {
 
-    [AddComponentMenu("DanmakU/Danmaku Emitter01")]
-    public class Emitter01 : DanmakuBehaviour
+    [AddComponentMenu("DanmakU/Emitters/Danmaku Emitter01")]
+    public class Emitter01 : Emitter
     {
 
         public DanmakuPrefab DanmakuType;
@@ -18,7 +18,7 @@ namespace DanmakU
         public Range FireRate = 5;
         public float FrameRate;
         public Arc Arc;
-        public Static Line;
+        public Static Static;
 
         float timer;
         DanmakuConfig config;
@@ -37,7 +37,13 @@ namespace DanmakU
             }
             var set = CreateSet(DanmakuType);
             set.AddModifiers(GetComponents<IDanmakuModifier>());
-            fireable = Arc.Of(Line).Of(set);
+            fireable = Arc.Of(Static).Of(set);
+        }
+
+
+        public override void Init()
+        {
+
         }
 
         /// <summary>
@@ -58,6 +64,7 @@ namespace DanmakU
                 {
                     Position = transform.position,
                     Rotation = transform.rotation.eulerAngles.z * Mathf.Deg2Rad,
+                    Angle = Mathf.PI / 2,
                     Speed = Speed,
                     AngularSpeed = AngularSpeed,
                     Color = Color

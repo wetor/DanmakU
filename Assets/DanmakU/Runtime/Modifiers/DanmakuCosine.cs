@@ -28,10 +28,9 @@ namespace DanmakU.Modifiers
         [Range(-Mathf.PI, Mathf.PI)]
         public float Phase;
         /// <summary>
-        /// 整体角度
+        /// 运动速度
         /// </summary>
-        [Range(-Mathf.PI, Mathf.PI)]
-        public float Angle;
+        public float Speed;
 
         public int num;
 
@@ -46,7 +45,8 @@ namespace DanmakU.Modifiers
                 Amplitude = Amplitude,
                 Period = Period,
                 Phase = Phase,
-                Angle = Angle,
+                Speed = Speed,
+                Angles = pool.Angles,
                 Counters = pool.Counters,
                 Displacements = pool.Displacements,
                 Rotations = pool.Rotations
@@ -70,7 +70,8 @@ namespace DanmakU.Modifiers
             public float Amplitude;
             public float Period;
             public float Phase;
-            public float Angle;
+            public float Speed;
+            public NativeArray<float> Angles;
             public NativeArray<int> Counters;
             public NativeArray<Vector2> Displacements;
             public NativeArray<float> Rotations;
@@ -79,10 +80,9 @@ namespace DanmakU.Modifiers
 
             public void Execute(int index)
             {
-                
-                y0 = Amplitude * Mathf.Cos(Mathf.PI / 16 * Counters[index] + Phase);
-                x = Mathf.Cos(Angle) * Period - Mathf.Sin(Angle) * y0;
-                y = Mathf.Sin(Angle) * Period + Mathf.Cos(Angle) * y0;
+                y0 = Amplitude * Mathf.Cos(Mathf.PI * Counters[index] / 60 * Speed + Phase);
+                x = Mathf.Cos(Angles[index]) * Period - Mathf.Sin(Angles[index]) * y0;
+                y = Mathf.Sin(Angles[index]) * Period + Mathf.Cos(Angles[index]) * y0;
                 Vector2 displacement = new Vector2(x, y);
                 Rotations[index] = Mathf.Atan2(displacement.y, displacement.x);
                 Displacements[index] = displacement;

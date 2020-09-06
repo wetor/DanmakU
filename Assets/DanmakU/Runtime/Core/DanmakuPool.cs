@@ -131,6 +131,12 @@ namespace DanmakU
         public NativeArray<float> Rotations;
 
         /// <summary>
+        /// 发射方向，与角度Rotation有区别 <see cref="DanmakU.Danmaku"/> in the pool.
+        /// </summary>
+        /// <seealso cref="DanmakU.Danmaku.Angle"/>
+        public NativeArray<float> Angles;
+
+        /// <summary>
         /// The array of all speeds of <see cref="DanmakU.Danmaku"/> in the pool.
         /// </summary>
         /// <seealso cref="DanmakU.Danmaku.Speed"/>
@@ -165,6 +171,7 @@ namespace DanmakU
             Positions = new NativeArray<Vector2>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Displacements = new NativeArray<Vector2>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Rotations = new NativeArray<float>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
+            Angles = new NativeArray<float>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Speeds = new NativeArray<float>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             AngularSpeeds = new NativeArray<float>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             Colors = new NativeArray<Vector4>(poolSize, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
@@ -243,6 +250,7 @@ namespace DanmakU
             Resize(ref Positions);
             Resize(ref Displacements);
             Resize(ref Rotations);
+            Resize(ref Angles);
             Resize(ref Speeds);
             Resize(ref AngularSpeeds);
             Resize(ref Colors);
@@ -273,6 +281,7 @@ namespace DanmakU
             Positions.Dispose();
             Displacements.Dispose();
             Rotations.Dispose();
+            Angles.Dispose();
             Speeds.Dispose();
             AngularSpeeds.Dispose();
             Colors.Dispose();

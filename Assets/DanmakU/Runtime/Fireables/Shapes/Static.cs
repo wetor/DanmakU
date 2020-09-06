@@ -13,7 +13,7 @@ namespace DanmakU.Fireables
         {
             var currentState = state;
             currentState.Position = state.Position;
-            currentState.Rotation = 0;
+            currentState.Angle = state.Angle;
             currentState.Speed = 0;
             Subfire(currentState);
         }
