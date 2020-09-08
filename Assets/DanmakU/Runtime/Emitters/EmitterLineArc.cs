@@ -6,8 +6,8 @@ using UnityEngine;
 namespace DanmakU.Emitters
 {
 
-    [AddComponentMenu("DanmakU/Emitters/Danmaku Emitter")]
-    public class DanmakuEmitter : DanmakuBehaviour
+    [AddComponentMenu("DanmakU/Emitters/Danmaku LineArc")]
+    public class EmitterLineArc : DanmakuBehaviour
     {
 
         public DanmakuPrefab DanmakuType;
